@@ -2,8 +2,8 @@
   paper: "us-letter",
   margin: (
     top: 1.5in,
-    left: 2in,
-    right: 2in,
+    left: 1in,
+    right: 1in,
     bottom: 1.5in,
 ),
 )
@@ -13,20 +13,35 @@
 		hanging-indent: 1em,
 	)
 	set text(
-		font: "Czaristite",
-		size: 12pt,
+		font: "Powell Antique",
+		size: 10pt,
 	)
 	content
 }
 #let szbr = v(1.2em)
-#let poem(title, usecols: false, by: none, content) = {
+#let poem(title, usecols: false, wide: false, by: none, content) = {
 	align(center, text(font: "Trocadero", size: 10pt)[Witchlight Carnival])
 	align(center, text(font: "Romantiques", size: 12pt)[Gnome Poetry Contest])
 	v(1in)
 
 	block(breakable: true)[
 		#align(left+horizon)[
-			#if usecols {
+			#if usecols == true {
+				block(inset: (left: 0.75in, right: 0.75in), {
+					align(center)[
+						#block()[
+							#align(left)[
+								#text(font: "Little Lord Fontleroy NF", size: 18pt, title)
+								#if by != none {
+									text(font: "Trattatello", size: 10pt, [\
+									by #by])
+								}
+							]
+						]
+					]
+					columns(2, stanzas(content))
+				})
+			} else if usecols == "wide" {
 				align(center)[
 					#block()[
 						#align(left)[
@@ -40,7 +55,8 @@
 				]
 				columns(2, stanzas(content))
 			} else {
-				block(inset: (left: 1in, right: 1in))[
+				let inset = if wide { 1.5in } else { 2in }
+				block(inset: (left: inset, right: inset))[
 					#text(font: "Little Lord Fontleroy NF", size: 18pt, title)
 					#if by != none {
 						text(font: "Trattatello", size: 10pt, [\
@@ -341,7 +357,7 @@ They’ll say his love is true to wed \
 ]
 */
 
-#poem("The Shadow-Bride")[
+#poem("The Shadow-Bride", wide: true)[
 In Waterdeep, I wished my True Love well.
 
 In Baldur’s Gate, I brushed my True Love’s beard.
@@ -422,7 +438,7 @@ Her name was Wiggs, it was not Pares,
 But Pares was put to rhyme with stairs.
 ]
 
-#poem("The Mewlips", by: "J.R.R. Tolkien", usecols: true)[
+#poem("The Mewlips", by: "J.R.R. Tolkien", usecols: "wide")[
 The shadows where the Mewlips dwell \
 Are dark and wet as ink,
 
@@ -574,7 +590,7 @@ they dance together then till dawn \
 and a single shadow make.
 ]
 
-#poem("Big Al's Rescue", usecols: true)[
+#poem("Big Al's Rescue", usecols: "wide")[
 In the hills near Phandalin, \
 Where dairy cows do roam,
 
