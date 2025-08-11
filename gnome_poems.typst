@@ -1,0 +1,735 @@
+#set page(
+  paper: "us-letter",
+  margin: (
+    top: 1.5in,
+    left: 2in,
+    right: 2in,
+    bottom: 1.5in,
+),
+)
+#let stanzas(content) = {
+	set par(
+		spacing: 0.65em,
+		hanging-indent: 1em,
+	)
+	set text(
+		font: "Czaristite",
+		size: 12pt,
+	)
+	content
+}
+#let szbr = v(1.2em)
+#let poem(title, usecols: false, by: none, content) = {
+	align(center, text(font: "Trocadero", size: 10pt)[Witchlight Carnival])
+	align(center, text(font: "Romantiques", size: 12pt)[Gnome Poetry Contest])
+	v(1in)
+
+	block(breakable: true)[
+		#align(left+horizon)[
+			#if usecols {
+				align(center)[
+					#block()[
+						#align(left)[
+							#text(font: "Little Lord Fontleroy NF", size: 18pt, title)
+							#if by != none {
+								text(font: "Trattatello", size: 10pt, [\
+								by #by])
+							}
+						]
+					]
+				]
+				columns(2, stanzas(content))
+			} else {
+				block(inset: (left: 1in, right: 1in))[
+					#text(font: "Little Lord Fontleroy NF", size: 18pt, title)
+					#if by != none {
+						text(font: "Trattatello", size: 10pt, [\
+						by #by])
+					}
+					#stanzas(content)
+				]
+			}
+		]
+	]
+
+	pagebreak(weak: true)
+}
+#poem("The Traveling Gnome", usecols: true)[
+There was an old Gnome
+
+Who had for a home
+
+The roots of a rowan,
+
+Red and green.
+
+#szbr
+
+His lips were a-pout
+
+For he longed to find out
+
+What sights lay about
+
+To be seen.
+
+#szbr
+
+“Today is the day!”
+
+I would hear this Gnome say.
+
+“Or tomorrow, I may
+
+Venture out!”
+
+#szbr
+
+Then he quitted his home,
+
+This mulish old Gnome,
+
+In order to roam
+
+All about.
+
+#szbr
+
+No one prophetic
+
+Could guess how athletic
+
+Or peripatetic
+
+Was he.
+
+#colbreak()
+
+In a year and a day
+
+(Or yet longer, they say),
+
+He came to a bay
+
+By the sea.
+
+#szbr
+
+He saw the fair sight
+
+Of the ocean, so bright
+
+And he turned himself right
+
+Back around
+
+#szbr
+
+And he marched for a year
+
+(Maybe longer, I hear),
+
+Till he came to be near
+
+That old mound
+
+#szbr
+
+Where again he could see
+
+That red and green tree
+
+That rowan where he
+
+Spent his life.
+
+#szbr
+
+For he had not brought
+
+What he knew that he ought.
+
+That gnome had forgotten
+
+His wife.
+]
+
+#poem("The Quickling")[
+He lives his life in a breath of air,
+
+The Quickling of the Gloaming Court.
+
+For your woes he has no care:
+
+He lives his life in a breath of air,
+
+And when he’s gone you’ll still be there.
+
+Your troubles last, but his are short.
+
+He lives his life in a breath of air,
+
+The Quickling of the Gloaming Court.
+]
+
+#poem("A Thing I’ve Lost")[
+A thing I’ve lost, to me ‘twas dear
+
+When last I gamboled in Whichlight,
+
+That fair from faerie land, Prismeer.
+
+#szbr
+
+My mother saw me shed a tear
+
+And asked how she might set it right.
+
+"A thing I lost, to me ‘twas dear."
+
+#szbr
+
+‘Twas at the carnival, I fear
+
+‘Twas on that strange and wond’rous night
+
+‘Twas nigh the faerie land, Prismeer.
+
+#szbr
+
+I asked the chiefs, a couple queer.
+
+I said to them, and was polite:
+
+"A thing I’ve lost, to me ‘twas dear."
+
+#szbr
+
+They taunted me, they did but jeer,
+
+That Mister Witch and Mister Light,
+
+Who hale not from the land, Prismeer.
+
+#szbr
+
+Forgotten long, my mem’ries clear.
+
+I’ll get it back, I know I might.
+
+A thing I’ve lost, to me ‘twas dear,
+
+In the faerie land Prismeer.
+]
+
+#poem("A Tabaxi of Phandalin")[
+There was a Tabaxi of Phandalin
+
+Who wanted to fix an old mandolin.
+
+He found it can’t sing \
+Using whiskers as string.
+
+So now it’s a lamp with a candle in.
+
+]
+
+#poem("Strange Magic", usecols: true)[
+Strange magic pervades \
+the Neverwinter Wood.
+
+Obscuring remains \
+of bygone kingdoms lost.
+
+Ice Pinnacle stands \
+in summer, rimed in frost.
+
+Can heroes succeed, \
+and lift the curse for good?
+
+#szbr
+
+Well readied and bold, \
+they’ll heal the Summer Wood!
+
+Long, dust-covered roads \
+can wear, deplete, exhaust.
+
+Long journeys ahead \
+and many pathways crossed.
+
+Yes! They can prevail, \
+prepared with gear and food!
+
+#colbreak()
+
+When danger’s at hand, \
+and the heroes need gear,
+
+Then come down to Barthen’s \
+Provisions and find
+
+The cheapest in Phandalin, \
+that’s guaranteed.
+
+Adventuring heroes \
+need never have fear.
+
+No matter your background \
+or how you’re aligned,
+
+At Barthen’s Provisions \
+we’ll have what you need!
+
+]
+
+/*
+// I like the first part of this, but the
+// iambic heptameter meter doesn't work well
+// with the ABAB Shakespearean sonnet structure.
+//
+// A tigher, iambic pentameter version follows.
+#poem("The Shadow-Bride", usecols: true)[
+In Waterdeep I wandered \
+    while I wished my True Love well.
+
+In Baldur’s Gate I bought a bead \
+    to braid my True Love’s beard.
+
+In Phandalin I faltered, \
+    following the Triboar Trail.
+
+In Neverwinter, near the North, \
+    I knew not what I feared.
+
+#szbr
+
+My True Love faces monstrous foes, \
+    and villains foul and fell.
+
+My True Love’s on a hero’s quest; \
+    a hero, he is cheered.
+
+I trace my True Love’s footsteps, \
+    and I write to him as well.
+
+My True Love never writes me back … \
+    which I think is weird.
+
+#colbreak()
+
+At night, my Love can’t see my shape, \
+    At noon, I shrink and hide.
+
+
+At sunrise and at sunset, \
+    when I reach my longest length,
+
+I walk beside my True Love, \
+    and match his every stride.
+
+I long to touch my True Love, \
+    but I dare not take his strength.
+
+#szbr
+
+My Love and I will marry, \
+    Underneath his favorite tree.
+
+They’ll say his love is true to wed \
+    a Shadow such as me.
+]
+*/
+
+#poem("The Shadow-Bride")[
+In Waterdeep, I wished my True Love well.
+
+In Baldur’s Gate, I brushed my True Love’s beard.
+
+In Phandalin I found the Triboar Trail.
+
+In Neverwinter, True Love's loss I feared.
+
+#szbr
+
+My True Love journeys on a Hero's quest.
+
+When came the call, my True Love volunteered.
+
+I write my Love, and give him all my best.
+
+He never writes me back ... I think that's weird.
+
+#szbr
+
+Unseen at night, at noon I shrink and hide.
+
+At sunrise when I reach my longest length,
+
+I walk beside my Love, and match his stride.
+
+I dare not touch my Love and take his strength.
+
+#szbr
+
+They'll say it must be True Love when we wed
+
+For heroes seldom marry the Undead.
+
+]
+
+
+#poem("The Old Man of the Hague", by: "Edward Lear")[
+There was an Old Man of the Hague,
+
+Whose ideas were excessively vague;
+
+He built a balloon \
+to examine the moon,
+
+That deluded Old Man of the Hague.
+]
+
+#poem("Mrs. Jaypher", by: "Edward Lear")[
+Mrs. Jaypher found a wafer
+
+Which she struck upon a note;
+
+This she took and gave the cook.
+
+Then she went and bought a boat
+
+Which she paddled down the stream
+
+Shouting, “Ice produces cream,
+
+Beer when churned produces butter!
+
+Henceforth all the words I utter
+
+Distant ages thus shall note—
+
+‘From the Jaypher Wisdom-Boat.’”
+]
+
+#poem("Epitaph", by: "Edward Lear")[
+Beneath these High Cathedral stairs
+
+Lie the remains of Susan Pares.
+
+Her name was Wiggs, it was not Pares,
+
+But Pares was put to rhyme with stairs.
+]
+
+#poem("The Mewlips", by: "J.R.R. Tolkien", usecols: true)[
+The shadows where the Mewlips dwell \
+Are dark and wet as ink,
+
+And slow and softly rings their bell, \
+As in the slime you sink.
+
+#szbr
+
+You sink into the slime, who dare \
+To knock upon their door,
+
+While down the grinning gargoyles stare \
+and noisome waters pour.
+
+#szbr
+
+Beside the rotting river-strand \
+The drooping willows weep,
+
+And gloomily the gorcrows stand \
+Croaking in their sleep.
+
+#szbr
+
+Over the Merlock Mountains a long and weary way, \
+In a mouldy valley where the trees are grey,
+
+By a dark pool's borders without wind or tide, \
+Moonless and sunless, the Mewlips hide.
+
+#colbreak()
+
+The cellars where the Mewlips sit \
+Are deep and dank and cold
+
+With single sickly candle lit; \
+And there they count their gold.
+
+#szbr
+
+Their walls are wet, their ceilings drip; \
+Their feet upon the floor
+
+Go softly with the squish-flap-flip, \
+As they sidle to the door.
+
+#szbr
+
+They peep out slyly; through a crack \
+Their feeling fingers creep,
+
+And when they've finished, in a sack \
+Your bones they take to keep.
+
+#szbr
+
+Beyond the Merlock Mountains, a long and lonely road, \
+Through the spider-shadows and the marsh of Tode,
+
+And through the wood of hanging trees and the gallows-weed, \
+You go to find the Mewlips---and the Mewlips feed.
+]
+
+#poem("Oliphaunt", by: "J.R.R. Tolkien")[
+Grey as a mouse,
+
+Big as a house,
+
+Nose like a snake,
+
+I make the earth shake,
+
+As I tramp through the grass,
+
+Trees crack as I pass.
+
+With horns in my mouth
+
+I walk in the South,
+
+Flapping big ears.
+
+Beyond count of years
+
+I stump round and round,
+
+Never lie on the ground,
+
+Not even to die.
+
+Oliphaunt am I,
+
+Biggest of all,
+
+Huge, old, and tall.
+
+If ever you'd met me,
+
+You wouldn't forget me.
+
+If you never do,
+
+You won't think I'm true;
+
+But old Oliphaunt am I,
+
+And I never lie.
+]
+
+#poem("Shadow-Bride", by: "J.R.R. Tolkien")[
+There was a man who dwelt alone, \
+as day and night went past
+
+he sat as still as carven stone, \
+and yet no shadow cast.
+
+The white owls perched upon his head \
+beneath the winter moon;
+
+they wiped their beaks and thought him dead \
+under the stars of June.
+
+#szbr
+
+There came a lady clad in grey \
+in the twilight shining:
+
+one moment she would stand and stay, \
+her hair with flowers entwining.
+
+He woke, as had he sprung of stone, \
+and broke the spell that bound him;
+
+he clasped her fast, both flesh and bone, \
+and wrapped her shadow round him.
+
+#szbr
+
+There never more she walks her ways \
+by sun or moon or star;
+
+she dwells below where neither days \
+nor any nights there are.
+
+But once a year when caverns yawn \
+and hidden things awake,
+
+they dance together then till dawn \
+and a single shadow make.
+]
+
+#poem("Big Al's Rescue", usecols: true)[
+In the hills near Phandalin, \
+Where dairy cows do roam,
+
+Lived a man named Kalazorn, \
+In a cozy, humble home.
+
+Now orcs had come to raid the land, \
+To steal Big Al’s fresh cheese,
+
+They took his dairy ranch by force, \
+And brought him to his knees.
+
+#szbr
+
+Oh! Davos and Pete! Hey nonny no, \
+And the Silver Soldier, ho!
+
+They came to save Big Al, hi-dee-ho, \
+And fight the orcish foe.
+
+But in their grand adventure, \
+In valiant, violent clashes,
+
+They saved the farmer's life, \
+but burned his house all down to ashes.
+
+#szbr
+
+With might and magic, Razzle came, \
+And bright shone Davos’ blade,
+
+With cunning Pete and crafty Flint, \
+And Aurelivera’s aid.
+
+While Golden Greyback took a nap, \
+Beneath a shady tree,
+
+Our other heroes were as brave \
+As any you might see.
+
+#colbreak()
+Oh! Davos and Pete! Hey nonny nay, \
+And the Silver Soldier, hey!
+
+They came to save Big Al, hi-dee-hay, \
+And fight the orcs that day.
+
+But in their grand adventure, \
+Which no orcish mischief hinders,
+
+They saved the farmer's life, \
+But burned his house to smoking cinders.
+
+#szbr
+
+They fought with valor, brave and true, \
+And gave the orcs a turn,
+
+But in the heat of battle’s blaze, \
+The house began to burn.
+
+The flames, they roared, the house did smoke, \
+ Big Al’s brown face turned white,
+
+He watched his home go up in flame, \
+ But _he_ was safe that night.
+
+#szbr
+
+Oh! Davos and Pete! Hey nonny nee, \
+And the Silver Soldier, lee!
+
+They came to save Big Al, hi-dee-hee, \
+And fight the orcish spree.
+
+But in their grand adventure, \
+Which evil orcs provoke,
+
+They saved the farmer's life, \
+But then his house went up in smoke.
+
+#colbreak()
+
+Now Big Al smiles with gratitude, \
+As he builds his house anew,
+
+And tells the tale of heroes brave, \
+Who saved his life, it's true.
+
+Yet Golden Greyback, lazy lout, \
+Still naps beneath his tree,
+
+He missed the chance to aid his friends, \
+And share their victory.
+
+#szbr
+
+Oh! Davos and Pete! Hey nonny no, \
+And the Silver Soldier, ho!
+
+They came to save Big Al, hi-dee-ho, \
+And fight the orcish foe.
+
+But in their grand adventure, \
+To save poor folk from trouble,
+
+They saved the farmer's life, \
+But they reduced his house to rubble.
+
+#colbreak()
+
+So raise your glass to Davos brave, \
+And Pete who laughs at danger,
+
+For in the darkest depths they fought, \
+And saved the humble granger.
+
+Their bond of trust unbroken, \
+Their deeds forever sung,
+
+In the hearts of grateful rural folk, \
+Their legacy is sprung.
+
+#szbr
+
+Oh, Davos and Pete! Hey nonny nay, \
+And the Silver Soldier, hey!
+
+They came to save Big Al, hi-dee-hay, \
+And fight the orcs that day.
+
+But in their grand adventure, \
+As fate would have it be,
+
+They saved the farmer's life, \
+But burned his house down to debris.
+
+]
+
+#poem("Reeve’s Abyssal Chicken")[
+Ab-ba-ba-byssal \
+ch-ch-ch-chicken
+
+Reeve’s Abyssal Chicken, \
+it’s a demon from Hell!
+
+It laid an egg inside you, \
+and it’s got a barbed shell.
+
+Wisdom DC 20 \
+if you want it intact.
+
+Avoid that magic healing: \
+it’s got Henpeck Attack!
+]
+
+#align(center+horizon, image(width: 100%, "abyssal-chicken.jpeg"))
+
