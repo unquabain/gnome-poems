@@ -16,7 +16,7 @@
 		font: "Powell Antique",
 		size: 10pt,
 	)
-	content
+	align(left, content)
 }
 #let szbr = v(1.2em)
 #let poem(title, usecols: false, wide: false, by: none, content) = {
@@ -24,24 +24,8 @@
 	align(center, text(font: "Romantiques", size: 12pt)[Gnome Poetry Contest])
 	v(1in)
 
-	block(breakable: true)[
-		#align(left+horizon)[
-			#if usecols == true {
-				block(inset: (left: 0.75in, right: 0.75in), {
-					align(center)[
-						#block()[
-							#align(left)[
-								#text(font: "Little Lord Fontleroy NF", size: 18pt, title)
-								#if by != none {
-									text(font: "Trattatello", size: 10pt, [\
-									by #by])
-								}
-							]
-						]
-					]
-					columns(2, stanzas(content))
-				})
-			} else if usecols == "wide" {
+			if usecols == true {
+				let colswidth = if wide == true { 5in } else if wide == false { 4in } else { wide }
 				align(center)[
 					#block()[
 						#align(left)[
@@ -53,7 +37,9 @@
 						]
 					]
 				]
-				columns(2, stanzas(content))
+				align(center, block(breakable: true, width: colswidth, {
+					columns(2, stanzas(content))
+				}))
 			} else {
 				let inset = if wide { 1.5in } else { 2in }
 				block(inset: (left: inset, right: inset))[
@@ -65,8 +51,6 @@
 					#stanzas(content)
 				]
 			}
-		]
-	]
 
 	pagebreak(weak: true)
 }
@@ -250,7 +234,7 @@ So now it’s a lamp with a candle in.
 
 ]
 
-#poem("Strange Magic", usecols: true)[
+#poem("Strange Magic", usecols: true, wide: true)[
 Strange magic pervades \
 the Neverwinter Wood.
 
@@ -438,7 +422,7 @@ Her name was Wiggs, it was not Pares,
 But Pares was put to rhyme with stairs.
 ]
 
-#poem("The Mewlips", by: "J.R.R. Tolkien", usecols: "wide")[
+#poem("The Mewlips", by: "J.R.R. Tolkien", usecols: true, wide: 7in)[
 The shadows where the Mewlips dwell \
 Are dark and wet as ink,
 
@@ -590,7 +574,7 @@ they dance together then till dawn \
 and a single shadow make.
 ]
 
-#poem("Big Al's Rescue", usecols: "wide")[
+#poem("Big Al's Rescue", usecols: true, wide: true)[
 In the hills near Phandalin, \
 Where dairy cows do roam,
 
