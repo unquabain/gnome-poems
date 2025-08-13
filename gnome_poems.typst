@@ -18,39 +18,43 @@
 	)
 	align(left, content)
 }
-#let szbr = v(1.2em)
-#let poem(title, usecols: false, wide: false, by: none, content) = {
+#let poem_header = {
 	align(center, text(font: "Trocadero", size: 10pt)[Witchlight Carnival])
 	align(center, text(font: "Romantiques", size: 12pt)[Gnome Poetry Contest])
 	v(1in)
+}
+#let poem_title(title) = text(font: "Little Lord Fontleroy NF", size: 18pt, title)
+#let szbr = v(1.2em)
+#let poem(title, usecols: false, wide: false, by: none, content) = {
+	poem_header
 
-			if usecols == true {
-				let colswidth = if wide == true { 5in } else if wide == false { 4in } else { wide }
-				align(center)[
-					#block()[
-						#align(left)[
-							#text(font: "Little Lord Fontleroy NF", size: 18pt, title)
-							#if by != none {
-								text(font: "Trattatello", size: 10pt, [\
-								by #by])
-							}
-						]
-					]
-				]
-				align(center, block(breakable: true, width: colswidth, {
-					columns(2, stanzas(content))
-				}))
-			} else {
-				let inset = if wide { 1.5in } else { 2in }
-				block(inset: (left: inset, right: inset))[
-					#text(font: "Little Lord Fontleroy NF", size: 18pt, title)
+	if usecols == true {
+		let colswidth = if wide == true { 5in } else if wide == false { 4in } else { wide }
+		align(center)[
+			#block()[
+				#align(left)[
+					#poem_title(title)
 					#if by != none {
 						text(font: "Trattatello", size: 10pt, [\
 						by #by])
 					}
-					#stanzas(content)
 				]
+			]
+		]
+		align(center, block(breakable: true, width: colswidth, {
+			columns(2, stanzas(content))
+		}))
+	} else {
+		let inset = if wide { 1.5in } else { 2in }
+		block(inset: (left: inset, right: inset))[
+			#poem_title(title)
+			#if by != none {
+				text(font: "Trattatello", size: 10pt, [\
+				by #by])
 			}
+			#stanzas(content)
+		]
+	}
 
 	pagebreak(weak: true)
 }
@@ -648,6 +652,75 @@ and hidden things awake,
 they dance together then till dawn \
 and a single shadow make.
 ]
+
+#poem_header
+#poem_title("The Trajedy of King Batrachus")
+
+#let play(..parts) = {
+grid(columns: 2, gutter: 0.25in, ..parts.pos().map(s => {
+	( text(weight: "bold", s.speaker ),
+	  block(width: 3.5in, s.speech)
+	)
+}).flatten()
+)
+}
+#let speech(speaker, body) = (
+  speaker: speaker,
+  speech: body
+)
+[King Batrachus, king of the Bullywugs, holds court in his mud-hut palace. Enter Lord Lagoon]
+
+#play(
+speech("Lord Lagoon")[
+Your Majesty, I have a boon to pray: \
+With urgent news into your court I fly, \
+For in your presence ought I have to say. \
+(And then I plan to stab thee in the eye!)
+],
+
+speech("King Batrachus")[
+O Lord Lagoon, desirest thou our throne \
+And hast thou some deceitful game to play? \
+Then leave our Royal Presence now alone, \
+Or say thou from afar what hast to say.
+],
+
+speech("Lord Lagoon")[
+O King, I fear I cannot say aloud \
+The fearful news that you must surely hear, \
+For villains maybe lurk among this crowd! \
+(And, come to kill thee, I must needs draw near.)
+],
+
+speech("King Batrachus")[
+To speak of villains! Hast a plot revealed?
+],
+
+speech("Lord Lagoon")[
+Indeed, My King, a plot to me is known, \
+The foulest plot that ever was concealed. \
+(I’ll say as much, for ‘tis my very own!)
+],
+
+speech("King Batrachus")[
+Approach! Reveal thy troubled mind… but hold! \
+Was this not how King Globulus was slain? \
+A trusted lord came nigh with object cold \
+And with a poignard, stabbed the Royal Brain! \
+\
+Promise us you will not stab our brain!
+],
+
+speech("Lord Lagoon")[(I take a step), I promise on your reign!],
+speech("King Batrachus")[And promise us you will not stab our ear!],
+speech("Lord Lagoon")[(I take a step) of that you need not fear.],
+speech("King Batrachus")[And promise us you will not stab our toe!],
+speech("Lord Lagoon")[(I take a step) I swear it shall be so.],
+speech("King Batrachus")[And promise us you will not stab our eye!],
+speech("Lord Lagoon")[Now with a fiendish grin, I strike!—],
+speech("King Batrachus")[—I die!]
+)
+#pagebreak()
 
 #poem("Big Al's Rescue", usecols: true, wide: true)[
 In the hills near Phandalin, \
