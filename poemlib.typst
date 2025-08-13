@@ -1,0 +1,63 @@
+#let stanzas(content) = {
+	set par(
+		spacing: 0.65em,
+		hanging-indent: 1em,
+	)
+	set text(
+		font: "Powell Antique",
+		size: 10pt,
+	)
+	align(left, content)
+}
+#let poem_header = {
+	align(center, text(font: "Trocadero", size: 10pt)[Witchlight Carnival])
+	align(center, text(font: "Romantiques", size: 12pt)[Gnome Poetry Contest])
+	v(1in)
+}
+#let poem_title(title) = text(font: "Little Lord Fontleroy NF", size: 18pt, title)
+#let szbr = v(1.2em)
+#let poem(title, usecols: false, wide: false, by: none, content) = {
+	poem_header
+
+	if usecols == true {
+		let colswidth = if wide == true { 5in } else if wide == false { 4in } else { wide }
+		align(center)[
+			#block()[
+				#align(left)[
+					#poem_title(title)
+					#if by != none {
+						text(font: "Trattatello", size: 10pt, [\
+						by #by])
+					}
+				]
+			]
+		]
+		align(center, block(breakable: true, width: colswidth, {
+			columns(2, stanzas(content))
+		}))
+	} else {
+		let inset = if wide { 1.5in } else { 2in }
+		block(inset: (left: inset, right: inset))[
+			#poem_title(title)
+			#if by != none {
+				text(font: "Trattatello", size: 10pt, [\
+				by #by])
+			}
+			#stanzas(content)
+		]
+	}
+
+	pagebreak(weak: false)
+}
+#let play(..parts) = {
+grid(columns: 2, gutter: 0.25in, ..parts.pos().map(s => {
+	( text(weight: "bold", s.speaker ),
+	  block(width: 3.5in, s.speech)
+	)
+}).flatten()
+)
+}
+#let speech(speaker, body) = (
+  speaker: speaker,
+  speech: body
+)

@@ -1,3 +1,4 @@
+#import "poemlib.typst": *
 #set page(
   paper: "us-letter",
   margin: (
@@ -7,57 +8,6 @@
     bottom: 1.5in,
 ),
 )
-#let stanzas(content) = {
-	set par(
-		spacing: 0.65em,
-		hanging-indent: 1em,
-	)
-	set text(
-		font: "Powell Antique",
-		size: 10pt,
-	)
-	align(left, content)
-}
-#let poem_header = {
-	align(center, text(font: "Trocadero", size: 10pt)[Witchlight Carnival])
-	align(center, text(font: "Romantiques", size: 12pt)[Gnome Poetry Contest])
-	v(1in)
-}
-#let poem_title(title) = text(font: "Little Lord Fontleroy NF", size: 18pt, title)
-#let szbr = v(1.2em)
-#let poem(title, usecols: false, wide: false, by: none, content) = {
-	poem_header
-
-	if usecols == true {
-		let colswidth = if wide == true { 5in } else if wide == false { 4in } else { wide }
-		align(center)[
-			#block()[
-				#align(left)[
-					#poem_title(title)
-					#if by != none {
-						text(font: "Trattatello", size: 10pt, [\
-						by #by])
-					}
-				]
-			]
-		]
-		align(center, block(breakable: true, width: colswidth, {
-			columns(2, stanzas(content))
-		}))
-	} else {
-		let inset = if wide { 1.5in } else { 2in }
-		block(inset: (left: inset, right: inset))[
-			#poem_title(title)
-			#if by != none {
-				text(font: "Trattatello", size: 10pt, [\
-				by #by])
-			}
-			#stanzas(content)
-		]
-	}
-
-	pagebreak(weak: true)
-}
 #poem("The Traveling Gnome", usecols: true)[
 There was an old Gnome
 
@@ -158,6 +108,8 @@ That gnome had forgotten
 His wife.
 ]
 
+#pagebreak()
+
 #poem("The Quickling")[
 He lives his life in a breath of air,
 
@@ -175,6 +127,8 @@ He lives his life in a breath of air,
 
 The Quickling of the Gloaming Court.
 ]
+
+#pagebreak()
 
 #poem("A Thing I’ve Lost")[
 A thing I’ve lost, to me ‘twas dear
@@ -226,6 +180,8 @@ A thing I’ve lost, to me ‘twas dear,
 In the faerie land Prismeer.
 ]
 
+#pagebreak()
+
 #poem("A Tabaxi of Phandalin")[
 There was a Tabaxi of Phandalin
 
@@ -237,6 +193,8 @@ Using whiskers as string.
 So now it’s a lamp with a candle in.
 
 ]
+
+#pagebreak()
 
 #poem("Strange Magic", usecols: true, wide: true)[
 Strange magic pervades \
@@ -286,6 +244,8 @@ At Barthen’s Provisions \
 we’ll have what you need!
 
 ]
+
+#pagebreak()
 
 /*
 // I like the first part of this, but the
@@ -382,6 +342,8 @@ For heroes seldom marry the Undead.
 
 ]
 
+#pagebreak()
+
 #poem("Sticky Fingers", usecols: true, wide: 5.5in)[
 Blue is the sky that darkens above, \
   pricked by a silvery dew.
@@ -458,216 +420,11 @@ Beware the sticky-fingered ones \
 For they are not what they seem.
 ]
 
-#poem("The Old Man of the Hague", by: "Edward Lear")[
-There was an Old Man of the Hague,
-
-Whose ideas were excessively vague;
-
-He built a balloon \
-to examine the moon,
-
-That deluded Old Man of the Hague.
-]
-
-#poem("Mrs. Jaypher", by: "Edward Lear")[
-Mrs. Jaypher found a wafer
-
-Which she struck upon a note;
-
-This she took and gave the cook.
-
-Then she went and bought a boat
-
-Which she paddled down the stream
-
-Shouting, “Ice produces cream,
-
-Beer when churned produces butter!
-
-Henceforth all the words I utter
-
-Distant ages thus shall note—
-
-‘From the Jaypher Wisdom-Boat.’”
-]
-
-#poem("Epitaph", by: "Edward Lear")[
-Beneath these High Cathedral stairs
-
-Lie the remains of Susan Pares.
-
-Her name was Wiggs, it was not Pares,
-
-But Pares was put to rhyme with stairs.
-]
-
-#poem("The Mewlips", by: "J.R.R. Tolkien", usecols: true, wide: 7in)[
-The shadows where the Mewlips dwell \
-Are dark and wet as ink,
-
-And slow and softly rings their bell, \
-As in the slime you sink.
-
-#szbr
-
-You sink into the slime, who dare \
-To knock upon their door,
-
-While down the grinning gargoyles stare \
-and noisome waters pour.
-
-#szbr
-
-Beside the rotting river-strand \
-The drooping willows weep,
-
-And gloomily the gorcrows stand \
-Croaking in their sleep.
-
-#szbr
-
-Over the Merlock Mountains a long and weary way, \
-In a mouldy valley where the trees are grey,
-
-By a dark pool's borders without wind or tide, \
-Moonless and sunless, the Mewlips hide.
-
-#colbreak()
-
-The cellars where the Mewlips sit \
-Are deep and dank and cold
-
-With single sickly candle lit; \
-And there they count their gold.
-
-#szbr
-
-Their walls are wet, their ceilings drip; \
-Their feet upon the floor
-
-Go softly with the squish-flap-flip, \
-As they sidle to the door.
-
-#szbr
-
-They peep out slyly; through a crack \
-Their feeling fingers creep,
-
-And when they've finished, in a sack \
-Your bones they take to keep.
-
-#szbr
-
-Beyond the Merlock Mountains, a long and lonely road, \
-Through the spider-shadows and the marsh of Tode,
-
-And through the wood of hanging trees and the gallows-weed, \
-You go to find the Mewlips---and the Mewlips feed.
-]
-
-#poem("Oliphaunt", by: "J.R.R. Tolkien")[
-Grey as a mouse,
-
-Big as a house,
-
-Nose like a snake,
-
-I make the earth shake,
-
-As I tramp through the grass,
-
-Trees crack as I pass.
-
-With horns in my mouth
-
-I walk in the South,
-
-Flapping big ears.
-
-Beyond count of years
-
-I stump round and round,
-
-Never lie on the ground,
-
-Not even to die.
-
-Oliphaunt am I,
-
-Biggest of all,
-
-Huge, old, and tall.
-
-If ever you'd met me,
-
-You wouldn't forget me.
-
-If you never do,
-
-You won't think I'm true;
-
-But old Oliphaunt am I,
-
-And I never lie.
-]
-
-#poem("Shadow-Bride", by: "J.R.R. Tolkien")[
-There was a man who dwelt alone, \
-as day and night went past
-
-he sat as still as carven stone, \
-and yet no shadow cast.
-
-The white owls perched upon his head \
-beneath the winter moon;
-
-they wiped their beaks and thought him dead \
-under the stars of June.
-
-#szbr
-
-There came a lady clad in grey \
-in the twilight shining:
-
-one moment she would stand and stay, \
-her hair with flowers entwining.
-
-He woke, as had he sprung of stone, \
-and broke the spell that bound him;
-
-he clasped her fast, both flesh and bone, \
-and wrapped her shadow round him.
-
-#szbr
-
-There never more she walks her ways \
-by sun or moon or star;
-
-she dwells below where neither days \
-nor any nights there are.
-
-But once a year when caverns yawn \
-and hidden things awake,
-
-they dance together then till dawn \
-and a single shadow make.
-]
+#pagebreak()
 
 #poem_header
 #poem_title("The Trajedy of King Batrachus")
 
-#let play(..parts) = {
-grid(columns: 2, gutter: 0.25in, ..parts.pos().map(s => {
-	( text(weight: "bold", s.speaker ),
-	  block(width: 3.5in, s.speech)
-	)
-}).flatten()
-)
-}
-#let speech(speaker, body) = (
-  speaker: speaker,
-  speech: body
-)
 [King Batrachus, king of the Bullywugs, holds court in his mud-hut palace. Enter Lord Lagoon]
 
 #play(

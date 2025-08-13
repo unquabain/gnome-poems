@@ -1,0 +1,206 @@
+#import "poemlib.typst": *
+#set page(
+  paper: "us-letter",
+  margin: (
+    top: 1.5in,
+    left: 1in,
+    right: 1in,
+    bottom: 1.5in,
+),
+)
+
+#poem("The Old Man of the Hague", by: "Edward Lear")[
+There was an Old Man of the Hague,
+
+Whose ideas were excessively vague;
+
+He built a balloon \
+to examine the moon,
+
+That deluded Old Man of the Hague.
+]
+
+#poem("Mrs. Jaypher", by: "Edward Lear")[
+Mrs. Jaypher found a wafer
+
+Which she struck upon a note;
+
+This she took and gave the cook.
+
+Then she went and bought a boat
+
+Which she paddled down the stream
+
+Shouting, “Ice produces cream,
+
+Beer when churned produces butter!
+
+Henceforth all the words I utter
+
+Distant ages thus shall note—
+
+‘From the Jaypher Wisdom-Boat.’”
+]
+
+#poem("Epitaph", by: "Edward Lear")[
+Beneath these High Cathedral stairs
+
+Lie the remains of Susan Pares.
+
+Her name was Wiggs, it was not Pares,
+
+But Pares was put to rhyme with stairs.
+]
+
+#poem("The Mewlips", by: "J.R.R. Tolkien", usecols: true, wide: 7in)[
+The shadows where the Mewlips dwell \
+Are dark and wet as ink,
+
+And slow and softly rings their bell, \
+As in the slime you sink.
+
+#szbr
+
+You sink into the slime, who dare \
+To knock upon their door,
+
+While down the grinning gargoyles stare \
+and noisome waters pour.
+
+#szbr
+
+Beside the rotting river-strand \
+The drooping willows weep,
+
+And gloomily the gorcrows stand \
+Croaking in their sleep.
+
+#szbr
+
+Over the Merlock Mountains a long and weary way, \
+In a mouldy valley where the trees are grey,
+
+By a dark pool's borders without wind or tide, \
+Moonless and sunless, the Mewlips hide.
+
+#colbreak()
+
+The cellars where the Mewlips sit \
+Are deep and dank and cold
+
+With single sickly candle lit; \
+And there they count their gold.
+
+#szbr
+
+Their walls are wet, their ceilings drip; \
+Their feet upon the floor
+
+Go softly with the squish-flap-flip, \
+As they sidle to the door.
+
+#szbr
+
+They peep out slyly; through a crack \
+Their feeling fingers creep,
+
+And when they've finished, in a sack \
+Your bones they take to keep.
+
+#szbr
+
+Beyond the Merlock Mountains, a long and lonely road, \
+Through the spider-shadows and the marsh of Tode,
+
+And through the wood of hanging trees and the gallows-weed, \
+You go to find the Mewlips---and the Mewlips feed.
+]
+
+#poem("Oliphaunt", by: "J.R.R. Tolkien")[
+Grey as a mouse,
+
+Big as a house,
+
+Nose like a snake,
+
+I make the earth shake,
+
+As I tramp through the grass,
+
+Trees crack as I pass.
+
+With horns in my mouth
+
+I walk in the South,
+
+Flapping big ears.
+
+Beyond count of years
+
+I stump round and round,
+
+Never lie on the ground,
+
+Not even to die.
+
+Oliphaunt am I,
+
+Biggest of all,
+
+Huge, old, and tall.
+
+If ever you'd met me,
+
+You wouldn't forget me.
+
+If you never do,
+
+You won't think I'm true;
+
+But old Oliphaunt am I,
+
+And I never lie.
+]
+
+#poem("Shadow-Bride", by: "J.R.R. Tolkien")[
+There was a man who dwelt alone, \
+as day and night went past
+
+he sat as still as carven stone, \
+and yet no shadow cast.
+
+The white owls perched upon his head \
+beneath the winter moon;
+
+they wiped their beaks and thought him dead \
+under the stars of June.
+
+#szbr
+
+There came a lady clad in grey \
+in the twilight shining:
+
+one moment she would stand and stay, \
+her hair with flowers entwining.
+
+He woke, as had he sprung of stone, \
+and broke the spell that bound him;
+
+he clasped her fast, both flesh and bone, \
+and wrapped her shadow round him.
+
+#szbr
+
+There never more she walks her ways \
+by sun or moon or star;
+
+she dwells below where neither days \
+nor any nights there are.
+
+But once a year when caverns yawn \
+and hidden things awake,
+
+they dance together then till dawn \
+and a single shadow make.
+]
+
